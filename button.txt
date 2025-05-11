@@ -1,0 +1,38 @@
+# ✅ Real-Time Detection Using Webcam
+def classify_waste_webcam():
+    cap = cv2.VideoCapture(0)
+    print(f"Using ESP at {"esp32.local"}")
+    
+    if not cap.isOpened():
+        print("⚠️ Error: Could not access webcam!")
+        return
+    
+    print("📷 Press SPACE to capture an image & classify, ESC to exit")
+    
+    
+    ret, frame = cap.read()
+    if not ret:
+        print("⚠️ Failed to grab frame")
+        
+        
+    cv2.imshow("Webcam", frame)
+    img_path = "captured_waste.jpg"
+    cv2.imwrite(img_path, frame)
+    classify_waste(img_path)
+    
+    cap.release()
+    cv2.destroyAllWindows()
+
+
+def message_handler(ws, message):
+    print("📨 Got a message:", message)
+    
+    #If the message is "capture", then trigger the classify_waste_webcam() function
+    if message == "capture":
+        print("📷 Triggering classify_waste_webcam()")
+        classify_waste_webcam()
+
+wsm = websocket.WebSocketApp("ws://esp32.local:81", on_message=message_handler)
+wsm.run_forever()
+
+
