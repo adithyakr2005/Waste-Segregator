@@ -1,7 +1,0 @@
-Predictions started to go wrong
-2 way HTTP data transfer.
-pressure plate might get sensed under bio degradable or non biodegradable
-API
-mDNS
-API taking alot if time
-load IP from DNS
