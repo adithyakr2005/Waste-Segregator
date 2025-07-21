@@ -1,5 +1,60 @@
-Waste Segregator using AI and IOT is a real time waste segregator using CNN model trained on a Bio and Non-Bio waste image dataset amd communicate to an ESP via WebSocket to control an actuator, LED and a 4×7 segment display.
+# ♻️ AI & IoT-Based Real-Time Waste Segregator
 
-The CNN model gives an accuracy of 96% and is efficient in classifying Bio and Non-Bio waste. 
+A real-time smart waste segregator that uses a **Convolutional Neural Network (CNN)** model and **IoT** to classify waste as *Biodegradable* or *Non-Biodegradable*. Based on the classification, the system automates sorting using an actuator, LED, and a 4×7 segment display.
 
-The ESP tries to connect to the WiFi network whose credentials were give prior. Once connected an LED will glow and hosts a local DNS server and tries to initiate an active connection with the device the ML model is running on. Once a waste is classified a message is sent through web-socket to the ESP if its a Bio or Non-Bio. Then after receiving the message at the ESP the 4×7 Segment shows "810" saying BIO and "-810" saying Non-Bio and turning the actuators and plane dropping the waste to its appropriate compartment.
+
+## 🧠 CNN Model
+
+- Trained on a custom dataset of bio and non-bio waste images.
+- Achieves **96% accuracy** in real-time classification.
+- Efficient and lightweight for fast inference.
+
+---
+
+## 📡 IoT Communication (ESP + WebSocket)
+
+- The ESP connects to a Wi-Fi network using credentials provided beforehand.
+- On successful connection, an **LED indicator** glows.
+- The ESP hosts a **local DNS server** and initiates a WebSocket connection with the device running the AI model.
+- Upon receiving a classification message:
+  - If **Bio**: Displays `810` on the 4×7 segment display and rotates the actuator to drop the waste into the *Biodegradable* compartment.
+  - If **Non-Bio**: Displays `-810` and moves the actuator to drop the waste into the *Non-Biodegradable* compartment.
+
+---
+
+## ⚙️ Components Used
+
+- ESP32 / ESP8266 microcontroller
+- TM1637 4×7 segment display
+- LED
+- Servo motor or actuator
+- Webcam for capturing waste images
+- Custom waste sorting structure (rotating plane or compartment separator)
+
+---
+
+## 🔄 Workflow
+
+1. The ESP powers on and connects to the Wi-Fi network.
+2. LED glows to indicate successful connection.
+3. ESP establishes a WebSocket connection with the ML system.
+4. When a waste item is introduced:
+   - The AI model captures and classifies the image.
+   - Sends classification (`BIO` or `NON-BIO`) to the ESP.
+5. Based on the result:
+   - The display shows `810` for BIO and `-810` for NON-BIO.
+   - The actuator sorts the waste into the correct bin.
+
+---
+
+## 📈 Accuracy
+
+> ✅ The CNN model achieves **96% accuracy**, ensuring reliable and real-time waste segregation.
+
+---
+
+## 📷 Example
+
+> 🗑️ *Waste image → Classified by AI → Message sent to ESP → Sorted using actuator*
+
+---
