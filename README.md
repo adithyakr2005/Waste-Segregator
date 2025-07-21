@@ -1,0 +1,5 @@
+Waste Segregator using AI and IOT is a real time waste segregator using CNN model trained on a Bio and Non-Bio waste image dataset amd communicate to an ESP via WebSocket to control an actuator, LED and a 4×7 segment display.
+
+The CNN model gives an accuracy of 96% and is efficient in classifying Bio and Non-Bio waste. 
+
+The ESP tries to connect to the WiFi network whose credentials were give prior. Once connected an LED will glow and hosts a local DNS server and tries to initiate an active connection with the device the ML model is running on. Once a waste is classified a message is sent through web-socket to the ESP if its a Bio or Non-Bio. Then after receiving the message at the ESP the 4×7 Segment shows "810" saying BIO and "-810" saying Non-Bio and turning the actuators and plane dropping the waste to its appropriate compartment.
